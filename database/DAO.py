@@ -11,7 +11,9 @@ class DAO():
         result = []
 
         cursor = conn.cursor(dictionary=True)
-        query = """SELECT * from airports a order by a.AIRPORT asc"""
+        query = """SELECT * 
+                    from airports a 
+                    order by a.AIRPORT asc"""
 
         cursor.execute(query)
 
