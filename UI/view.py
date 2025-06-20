@@ -38,26 +38,38 @@ class View(ft.UserControl):
 
         self._ddAereoportoP = ft.Dropdown(label="Aeroporto di Partenza",)
         self._btnConnessi = ft.ElevatedButton(text="Aereoporto Connessi",
-                                            on_click=self._controller.handle_Connessi)
+                                            on_click=self._controller.handle_Connessi,
+                                              disabled=True)
+        self._btnPercorso = ft.ElevatedButton(text="Trova Percorso",
+                                              on_click=self._controller.handle_Percorso,
+                                              disabled=True)
         row2 = ft.Row([
-            ft.Container(None, width=250),
             ft.Container(self._ddAereoportoP, width=250),
             ft.Container(self._btnConnessi, width=250),
+            ft.Container(self._btnPercorso, width=250),
         ], ft.MainAxisAlignment.CENTER)
 
         self._ddAereoportoD = ft.Dropdown(label="Aeroporto di Destinazione",)
         self._txtInTratteMax = ft.TextField(label = "N Tratte Max")
         self._btnCerca = ft.ElevatedButton(text="Cerca Itinerario",
-                                           on_click=self._controller.handle_CercaItinerario)
+                                           on_click=self._controller.handle_CercaItinerario,
+                                           disabled=True)
         row3 = ft.Row([
             ft.Container(self._ddAereoportoD, width=250),
             ft.Container(self._txtInTratteMax, width=250),
             ft.Container(self._btnCerca, width=250),
         ], ft.MainAxisAlignment.CENTER)
 
+        self.txt_result = ft.ListView(expand=1, spacing=10, padding=20, auto_scroll=True)
+        row4 = ft.Row([self.txt_result])
+
         self._page.controls.append(row1)
         self._page.controls.append(row2)
         self._page.controls.append(row3)
+        self._page.controls.append(row4)
+
+
+
 
 
 
